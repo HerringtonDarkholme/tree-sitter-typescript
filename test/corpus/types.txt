@@ -2214,3 +2214,23 @@ import something from 'foo.css' assert { type: 'css' }
           (property_identifier)
           (string
             (string_fragment)))))))
+
+=========================
+Import in type
+=========================
+
+type Foo = import('foo').Foo<F>;
+
+---
+    (program
+      (type_alias_declaration
+        (type_identifier)
+        (member_expression
+          (call_expression
+            (import)
+            (arguments
+              (string
+                (string_fragment))))
+          (property_identifier)
+          (type_arguments
+            (type_identifier)))))
